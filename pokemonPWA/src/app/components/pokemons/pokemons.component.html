@@ -1,12 +1,26 @@
 <div class="container">
   <h1>Pokemons</h1>
-  <ul class="list-group">
-    <a
+  <div class="view-buttons">
+    <button mat-raised-button color="primary" (click)="setView('cards')">
+      Cards
+    </button>
+    <button mat-raised-button color="accent" (click)="setView('table')">
+      Table
+    </button>
+  </div>
+
+  <div *ngIf="view === 'cards'" class="cards-container">
+    <app-card
       *ngFor="let pokemon of pokemons"
-      [routerLink]="['/pokemon', pokemon.name]"
-      class="list-group-item list-group-item-action animate__animated animate__bounce animate__fadeIn"
-    >
-      {{ pokemon.name }}
-    </a>
-  </ul>
+      [name]="pokemon.name"
+      [link]="'/pokemon/' + pokemon.name"
+    ></app-card>
+  </div>
+
+  <div *ngIf="view === 'table'" class="table-container">
+    <app-grid
+      [data]="pokemons"
+      (rowClick)="navigateToDetail($event)"
+    ></app-grid>
+  </div>
 </div>

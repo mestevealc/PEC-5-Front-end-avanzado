@@ -11,6 +11,7 @@ import { Pokemon } from '../models/pokemon.interface';
 })
 export class PokemonComponent implements OnInit {
   pokemon: Pokemon | null = null;
+  details: boolean = false;
 
   constructor(
     private pokemonsService: PokemonsService,
@@ -30,5 +31,9 @@ export class PokemonComponent implements OnInit {
       this.pokemon = pokemon;
       console.log('pokemon ', this.pokemon);
     });
+  }
+
+  moreDetails(): void {
+    this.details = !this.details;
   }
 }

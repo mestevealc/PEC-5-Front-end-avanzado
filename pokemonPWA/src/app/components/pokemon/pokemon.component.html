@@ -1,24 +1,33 @@
-<div class="container mt-5">
+<div class="container">
   <div
     *ngIf="pokemon"
     class="row animate__animated animate__bounce animate__fadeIn"
   >
     <div class="col-md-9">
-      <p><strong>Identifier:</strong> {{ pokemon.id }}</p>
-      <p><strong>Name:</strong> {{ pokemon.name }}</p>
-      <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
-      <p><strong>Base experience:</strong> {{ pokemon.base_experience }}</p>
-      <p><strong>Order:</strong> {{ pokemon.order }}</p>
+      <h2>{{ pokemon.name }}</h2>
 
       <img
-        style="width: 80%; height: 80%"
-        class="rounded"
+        style="width: 40%; height: 40%"
         src="{{ pokemon.sprites.front_default }}"
-        alt=""
+        alt="{{ pokemon.name }}"
       />
     </div>
     <div class="col-md-3">
       <a class="btn btn-danger" routerLink="/">Back</a>
     </div>
+  </div>
+
+  <div *ngIf="pokemon" class="details-section">
+    <button mat-raised-button color="primary" (click)="moreDetails()">
+      {{ details ? "Hide Details" : "Show All Details" }}
+    </button>
+
+    <!-- Expansion Panel de Angular Material -->
+    <mat-accordion *ngIf="details">
+      <p><strong>ID:</strong> {{ pokemon.id }}</p>
+      <p><strong>Weight:</strong> {{ pokemon.weight }}</p>
+      <p><strong>Base Experience:</strong> {{ pokemon.base_experience }}</p>
+      <p><strong>Order:</strong> {{ pokemon.order }}</p>
+    </mat-accordion>
   </div>
 </div>

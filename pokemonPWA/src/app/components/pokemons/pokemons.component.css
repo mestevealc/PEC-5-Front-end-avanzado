@@ -1,0 +1,15 @@
+.view-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pokemon-card {
+  width: 200px;
+}
